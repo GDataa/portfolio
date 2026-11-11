@@ -2,6 +2,7 @@
 <html lang="pt-PT">
 <head>
 <meta charset="utf-8">
+<script>document.documentElement.classList.add('js')</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>João Atilano — Desenvolvedor Java & Backend</title>
 <meta name="description" content="Portfólio de João Atilano: Java, backend, APIs e desenvolvimento de plugins e mods de Minecraft.">
@@ -27,7 +28,8 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:80px}
-html,body{overflow-x:clip}
+html,body{overflow-x:hidden;overflow-x:clip}
+.tools{contain:paint}
 body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
 ::selection{background:var(--mint);color:#04140e}
 a{color:inherit}
@@ -36,7 +38,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 .mono{font-family:var(--mono)}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 28px}
 .touch-only{display:none}
-@media (hover:none){.touch-only{display:inline}svg.touch-only{display:block}.hover-only{display:none}}
+@media not all and (any-hover:hover){.touch-only{display:inline}svg.touch-only{display:block}.hover-only{display:none}}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 
 /* background */
@@ -54,7 +56,7 @@ main,header,footer{position:relative;z-index:1}
 .cur{width:6px;height:6px;background:var(--mint)}
 .cur-ring{width:34px;height:34px;border:1.5px solid rgba(62,240,181,.5);transition:width .2s,height .2s,border-color .2s,background .2s}
 .cur-ring.hover{width:56px;height:56px;border-color:var(--mint);background:rgba(62,240,181,.06)}
-@media (hover:none),(pointer:coarse){.cur,.cur-ring{display:none}}
+@media not all and (any-pointer:fine){.cur,.cur-ring{display:none}}
 
 /* progress */
 .progress{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--mint),var(--blue));z-index:60;width:0}
@@ -62,6 +64,8 @@ main,header,footer{position:relative;z-index:1}
 /* boot */
 #boot{position:fixed;inset:0;background:var(--bg);z-index:100;display:flex;align-items:center;justify-content:center;transition:opacity .5s,visibility .5s}
 #boot.done{opacity:0;visibility:hidden}
+#boot{animation:bootout .4s 4s forwards}@keyframes bootout{to{opacity:0;visibility:hidden}}
+html:not(.js) #boot{display:none}
 #boot pre{font-family:var(--mono);font-size:14px;color:var(--muted);margin:0;min-width:min(520px,86vw);line-height:1.8}
 #boot .ok{color:var(--mint)}#boot .hl{color:var(--text)}
 #boot .skip{position:absolute;bottom:28px;font-family:var(--mono);font-size:12px;color:var(--dim)}
@@ -89,9 +93,9 @@ section{padding:130px 0 40px}
 .sec-num{font-family:var(--mono);color:var(--mint);font-size:14px}
 .sec-head h2{font-size:clamp(32px,4.4vw,50px);line-height:1.05;margin:0;letter-spacing:-.02em;font-weight:700}
 .sec-head .line{flex:1;height:1px;background:linear-gradient(90deg,var(--line2),transparent);min-width:60px;align-self:center}
-.sec-head p{flex:0 0 100%;margin:6px 0 0;color:var(--muted);max-width:640px}
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
-.reveal.in{opacity:1;transform:none}
+.sec-head p{flex:0 0 100%;margin:6px 0 0;color:var(--muted);max-width:none;padding-right:max(0px,calc(100% - 640px))}
+.js .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.js .reveal.in{opacity:1;transform:none}
 
 /* hero */
 .hero{min-height:100vh;min-height:100svh;display:flex;align-items:center;padding:110px 0 70px}
@@ -402,7 +406,7 @@ footer{border-top:1px solid var(--line);margin-top:120px;padding:40px 0}
 .show-xs{display:none}
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
-  .reveal{opacity:1;transform:none}
+  .js .reveal{opacity:1;transform:none}
 }
 </style>
 </head>
@@ -674,7 +678,7 @@ const boot=$('#boot'),blog=$('#bootlog');
 const BOOT=[['<span class="hl">atilano.dev</span> v2026.11',''],['a carregar módulos','<span class="ok">ok</span>'],['java --version','<span class="ok">21</span>'],['a ligar ao github.com/GDataa','<span class="ok">ok</span>'],['a compilar portfólio','<span class="ok">pronto</span>']];
 let bootDone=false;
 function endBoot(){if(bootDone)return;bootDone=true;boot.classList.add('done');startHero()}
-if(RM){endBoot()}else{
+function initBoot(){if(RM){endBoot();return}
   let i=0;const step=()=>{if(bootDone)return;if(i<BOOT.length){const [a,b]=BOOT[i++];blog.innerHTML+=`<span class="ok">›</span> ${a}${b?' ... '+b:''}\n`;setTimeout(step,170)}else setTimeout(endBoot,300)};step();
   boot.addEventListener('click',endBoot);addEventListener('keydown',endBoot,{once:true});setTimeout(endBoot,3000);
 }
@@ -752,7 +756,7 @@ $('#projects').innerHTML=PROJECTS.map((p,i)=>`<article class="proj reveal" data-
     </div>
   </div></article>`).join('');
 // hover / in-view video
-const canHover=matchMedia('(hover:hover)').matches;
+const canHover=matchMedia('(any-hover:hover)').matches;
 $$('.proj').forEach(card=>{const v=card.querySelector('video');
   const play=()=>{if(RM)return;v.play().then(()=>card.classList.add('playing')).catch(()=>{})};
   const stop=()=>{v.pause();card.classList.remove('playing')};
@@ -884,7 +888,7 @@ $('#burger').onclick=()=>$('#mnav').classList.toggle('open');
 $$('#mnav a').forEach(a=>a.addEventListener('click',()=>$('#mnav').classList.remove('open')));
 
 /* ---------- cursor + magnetic ---------- */
-if(matchMedia('(hover:hover) and (pointer:fine)').matches&&!RM){
+if(matchMedia('(any-hover:hover) and (any-pointer:fine)').matches&&!RM){
   const c=$('#cur'),r=$('#ring');let mx=-100,my=-100,rx=-100,ry=-100;
   addEventListener('pointermove',e=>{mx=e.clientX;my=e.clientY;c.style.transform=`translate(${mx-3}px,${my-3}px)`});
   (function loop(){rx+=(mx-rx)*.18;ry+=(my-ry)*.18;r.style.transform=`translate(${rx-r.offsetWidth/2}px,${ry-r.offsetHeight/2}px)`;requestAnimationFrame(loop)})();
@@ -910,6 +914,7 @@ function frame(){if(!running)return;g.clearRect(0,0,W,H);const L=130*dpr;
     g.fillStyle='rgba(122,162,255,.5)';g.fillRect(a.x-dpr,a.y-dpr,2*dpr,2*dpr)}
   if(!RM)requestAnimationFrame(frame)}
 frame();
+initBoot();
 })();
 </script>
 </body>
