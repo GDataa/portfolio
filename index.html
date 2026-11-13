@@ -11,7 +11,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="João Atilano — Desenvolvedor Java & Backend">
 <meta property="og:description" content="Java, backend, APIs e plugins e mods de Minecraft. Projetos, stack e contacto.">
-<meta property="og:image" content="https://atilano.vercel.app/assets/img/og.png">
+<meta property="og:image" content="assets/img/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -184,6 +184,11 @@ section{padding:130px 0 40px}
 .proj{position:relative;border:1px solid var(--line);border-radius:20px;background:rgba(13,20,32,.75);overflow:hidden;transition:border-color .3s,transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s;transform-style:preserve-3d}
 .proj:hover{border-color:var(--line2);box-shadow:0 30px 60px -30px rgba(0,0,0,.9)}
 .proj.hide{display:none}
+.proj.featured{grid-column:1/-1;display:grid;grid-template-columns:1.35fr 1fr;align-items:center}
+.proj.featured .media{height:100%;aspect-ratio:16/9}
+.proj.featured .pbody{padding:30px 34px}
+.proj.featured .pbody h3{font-size:34px}
+.meta .new{color:var(--red)}
 .media{position:relative;aspect-ratio:16/9;background:#05080d;overflow:hidden;cursor:pointer}
 .media img,.media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .4s,transform .8s}
 .media video{opacity:0}
@@ -194,6 +199,7 @@ section{padding:130px 0 40px}
 .media .count{position:absolute;bottom:14px;right:14px;font-family:var(--mono);font-size:11px;background:rgba(7,11,18,.8);border:1px solid var(--line);padding:5px 10px;border-radius:8px;z-index:2;color:var(--muted)}
 .media .play{position:absolute;inset:0;display:grid;place-items:center;z-index:1;opacity:0;transition:opacity .3s}
 .media:hover .play{opacity:1}
+.proj.playing .media .play{opacity:0}
 .play span{width:62px;height:62px;border-radius:50%;background:rgba(7,11,18,.7);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.15);display:grid;place-items:center}
 .play span::after{content:"";border-left:16px solid var(--text);border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:5px}
 .pbody{padding:24px 24px 26px}
@@ -338,6 +344,7 @@ footer{border-top:1px solid var(--line);margin-top:120px;padding:40px 0}
 .mnav a span{color:var(--mint)}
 
 @media (max-width:980px){
+  .proj.featured{grid-template-columns:1fr}
   .hero-grid,.about,.contact,.mcontent{grid-template-columns:1fr}
   .editor{transform:none}
   .langs{grid-template-columns:repeat(2,1fr)}
@@ -452,9 +459,9 @@ footer{border-top:1px solid var(--line);margin-top:120px;padding:40px 0}
         <a class="btn magnetic" href="https://github.com/GDataa" target="_blank" rel="noopener">GitHub ↗</a>
       </div>
       <div class="stats">
-        <div class="stat"><b data-count="4">0</b><span>projetos em destaque</span></div>
+        <div class="stat"><b data-count="5">0</b><span>projetos em destaque</span></div>
         <div class="stat"><b data-count="6">0</b><span>linguagens</span></div>
-        <div class="stat"><b data-count="15" data-suffix="+">0</b><span>ferramentas e frameworks</span></div>
+        <div class="stat"><b data-count="22">0</b><span>ferramentas e frameworks</span></div>
       </div>
     </div>
     <div class="editor reveal" id="editor">
@@ -473,7 +480,7 @@ footer{border-top:1px solid var(--line);margin-top:120px;padding:40px 0}
   <div class="wrap">
     <div class="sec-head reveal"><span class="sec-num">01.</span><h2>Sobre mim</h2><span class="line"></span></div>
     <div class="about">
-      <div class="photo reveal"><img src="assets/img/joao.webp" alt="Fotografia de João Atilano" width="347" height="462"><div class="tag"><b>●</b> Guimarães, Portugal</div></div>
+      <div class="photo reveal"><img src="assets/img/joao.webp" alt="Fotografia de João Atilano" width="347" height="462"><div class="tag"><b>●</b> Famalicão, Portugal</div></div>
       <div class="reveal">
         <h3>Estudante de Redes e Sistemas Informáticos que aprende <em>a construir projetos reais</em>.</h3>
         <p>Estou a tirar o CTESP em Redes e Sistemas Informáticos na UPCA (antigo IPCA). Fora das aulas desenvolvo aplicações Java, plugins para servidores e mods de Minecraft, e APIs para clientes.</p>
@@ -560,7 +567,8 @@ footer{border-top:1px solid var(--line);margin-top:120px;padding:40px 0}
         <div class="cards">
           <div class="ccard"><span class="ic">@</span><div><small>email</small><b id="mailtxt">joaoatilano00@gmail.com</b></div><button class="go" data-copy="joaoatilano00@gmail.com">copiar</button></div>
           <a class="ccard" href="https://github.com/GDataa" target="_blank" rel="noopener"><span class="ic">gh</span><div><small>github</small><b>github.com/GDataa</b></div><span class="go">abrir ↗</span></a>
-          <div class="ccard"><span class="ic">◎</span><div><small>localização</small><b>Guimarães, Portugal · remoto ou presencial</b></div></div>
+          <a class="ccard" href="https://instagram.com/atilano_25_" target="_blank" rel="noopener"><span class="ic">ig</span><div><small>instagram</small><b>@atilano_25_</b></div><span class="go">abrir ↗</span></a>
+          <div class="ccard"><span class="ic">◎</span><div><small>localização</small><b>Famalicão, Portugal · remoto ou presencial</b></div></div>
         </div>
       </div>
       <form class="msg reveal" id="form" novalidate>
@@ -630,24 +638,30 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',
 
 /* ---------- data ---------- */
 const PROJECTS=[
- {id:'pets',name:'Pets',cat:'minecraft',color:'var(--pink)',kind:'Plugin Spigot',year:'Hyvel',
-  short:'Plugin de Minecraft com sistema de pets, loja rotativa e leilões entre jogadores, com dados guardados em MySQL ou SQLite.',
-  long:'Plugin para o ecossistema do servidor Hyvel, centrado em pets. Cada jogador tem companheiros que o seguem. Há uma loja rotativa que muda a oferta de tempos a tempos e uma casa de leilões onde os jogadores compram e vendem pets entre si. Os dados ficam guardados em MySQL ou SQLite, consoante a configuração do servidor.',
-  feats:['Sistema de pets por jogador','Loja rotativa com oferta que muda periodicamente','Casa de leilões entre jogadores','Persistência em MySQL ou SQLite'],
-  stack:['Java','Spigot API','MySQL','SQLite'],repo:'https://github.com/GDataa/Pets',
-  media:[{t:'video',src:'assets/video/pets.mp4',poster:'assets/img/pets-a.webp',cap:'Pets, loja rotativa e leilão em direto'},{t:'img',src:'assets/img/pets-a.webp',cap:'Ilha dos pets e loja rotativa'},{t:'img',src:'assets/img/pets-b.webp',cap:'Casa de leilões'}]},
- {id:'minas',name:'Minas',cat:'minecraft',color:'var(--amber)',kind:'Plugin Paper',year:'Hyvel',
-  short:'Plugin de mineração para o servidor Hyvel, integrado com LuckPerms, Vault e WorldEdit.',
-  long:'Plugin de mineração para o ecossistema Hyvel. Usa o LuckPerms para gerir o acesso por permissões, o Vault para a economia e o WorldEdit para trabalhar com as regiões das minas. Feito em Java 21 sobre a API do Paper e gerido com Maven.',
-  feats:['Minas pensadas para a progressão dos jogadores','Permissões com LuckPerms','Economia com Vault','Regiões com WorldEdit'],
-  stack:['Java 21','Paper API','Maven','LuckPerms','Vault','WorldEdit'],repo:'https://github.com/GDataa/Minas',
+ {id:'saque',name:'HyvelSaque',cat:'minecraft',color:'var(--red)',kind:'Plugin AdvancedSlimePaper',year:'Hyvel · novo',commits:1,featured:true,
+  short:'Plugin de saques cooperativos: tripulações, cidades instanciadas com ondas de inimigos e chefes, e progressão com XP, níveis, armas e mascotes.',
+  long:'Plugin de Minecraft de saques cooperativos para o Hyvel. Os jogadores formam tripulações, escolhem a cidade e a dificuldade e enfrentam ondas de inimigos, mobs e chefes configuráveis. Cada equipa joga numa cópia instanciada da cidade, criada a partir de modelos de mundos Slime, e as alterações feitas durante o saque não ficam guardadas. A personagem evolui com XP, níveis, atributos e poder, e há armas e mascotes com atributos próprios, além de boosters de XP individuais e globais. Inclui menus no jogo, mensagens configuráveis com MiniMessage e ferramentas de administração para criar cidades, importar mundos, editar modelos e testar instâncias.',
+  feats:['Tripulações com convites, entrada e saída e procura de grupos abertos','Cidades instanciadas a partir de modelos de mundos Slime: cada equipa joga na sua cópia','Escolha de cidade e dificuldade, com ondas de inimigos, mobs e chefes configuráveis','Progressão com XP, níveis, atributos e poder da personagem','Armas e mascotes com atributos próprios','Boosters de XP individuais e globais','Menus no jogo e mensagens configuráveis com MiniMessage','Ferramentas de administração: criar cidades, importar mundos, editar modelos e testar instâncias','Dados guardados em ficheiros, sem base de dados externa','Integração opcional com o Oraxen para itens e menus personalizados'],
+  stack:['Java 21','AdvancedSlimePaper 1.21.4','Maven','MiniMessage','Oraxen (opcional)'],repo:'https://github.com/GDataa/HyvelSaque',
+  media:[{t:'video',src:'assets/video/saque.mp4',poster:'assets/img/saque-a.webp',cap:'Tripulação a defender a cidade contra ondas e um chefe'},{t:'img',src:'assets/img/saque-a.webp',cap:'Saque em curso: ondas, chefe e tripulação'},{t:'img',src:'assets/img/saque-b.webp',cap:'Escolha de cidade, dificuldade e personagem'}]},
+ {id:'pets',name:'Pets',cat:'minecraft',color:'var(--pink)',kind:'Plugin Spigot/Paper',year:'Hyvel',commits:7,
+  short:'Plugin de pets para o Hyvel: companheiros que te seguem, roupeiro com bónus, loja rotativa e leilões entre jogadores.',
+  long:'Plugin de pets para o ecossistema do servidor Hyvel. Os pets seguem o jogador com interpolação suave e um efeito de flutuação, têm o nome num holograma e acompanham-no entre mundos. Cada pet pode usar acessórios do roupeiro, que dão bónus permanentes, e comer comida especial, que dá buffs temporários. A economia tem uma loja rotativa de roupa e comida que se renova com um temporizador, e uma casa de leilões com menus paginados e licitação pelo chat. Os pagamentos e reembolsos são feitos de forma assíncrona através da API yEconomias.',
+  feats:['Seguimento com interpolação vetorial suave, flutuação e hologramas com o nome','Teletransporte entre mundos junto com o jogador','Menus de pets desbloqueados e bloqueados','Roupeiro com acessórios que dão bónus permanentes','Comida especial com buffs temporários','Loja rotativa de roupa e comida com temporizador','Casa de leilões com menus paginados e licitação pelo chat','Pagamentos e reembolsos assíncronos via yEconomias','Bónus calculados a partir da lore dos itens com regex','Dados em SQLite ou MySQL'],
+  stack:['Java 17+','Spigot / Paper','yEconomias','SQLite','MySQL'],repo:'https://github.com/GDataa/Pets',
+  media:[{t:'video',src:'assets/video/pets.mp4',poster:'assets/img/pets-a.webp',cap:'Pets, loja rotativa de roupa e comida e leilão em direto'},{t:'img',src:'assets/img/pets-a.webp',cap:'Pets e loja rotativa'},{t:'img',src:'assets/img/pets-b.webp',cap:'Casa de leilões'}]},
+ {id:'minas',name:'Minas',cat:'minecraft',color:'var(--amber)',kind:'Plugin Paper',year:'Hyvel',commits:7,
+  short:'Plugin de mineração para o servidor Hyvel, em Paper 1.21.4 e Java 21, com mundos geridos pelo Slime World Manager.',
+  long:'Plugin dedicado à mineração no ecossistema do servidor Hyvel. Foi feito para Minecraft 1.21.4 sobre a API do Paper, em Java 21, e usa o Slime World Manager para gerir os mundos. A arquitetura é pensada para crescer, e o build é feito com Maven.',
+  feats:['Sistema de mineração dedicado ao Hyvel','Construído sobre o ecossistema Paper (Minecraft 1.21.4)','Gestão de mundos com o Slime World Manager','Arquitetura extensível, pensada para novas funcionalidades','Build com Maven'],
+  stack:['Java 21','Paper 1.21.4','Maven','Slime World Manager'],repo:'https://github.com/GDataa/Minas',
   media:[{t:'video',src:'assets/video/minas.mp4',poster:'assets/img/minas-a.webp',cap:'Mineração com contadores e reset da mina'},{t:'img',src:'assets/img/minas-a.webp',cap:'Vista da mina'},{t:'img',src:'assets/img/minas-b.webp',cap:'Menu das minas e chat do servidor'}]},
- {id:'gamono',name:'GamonoAPI',cat:'backend',color:'var(--blue)',kind:'API REST',year:'Cliente',
-  short:'API feita à medida para um cliente, com autenticação, gestão de dados e testes unitários com Jest.',
-  long:'API desenvolvida à medida para a Gamono. Trata da autenticação e da gestão de dados e tem testes unitários com Jest para garantir que cada parte continua a funcionar à medida que o projeto cresce.',
-  feats:['Autenticação de utilizadores','Gestão de dados através de endpoints REST','Testes unitários com Jest','Estrutura modular, fácil de manter'],
-  stack:['JavaScript','Node.js','Jest','REST'],repo:'https://github.com/GDataa/GamonoAPI_V1',
-  media:[{t:'video',src:'assets/video/gamono.mp4',poster:'assets/img/gamono-a.webp',cap:'Testes a correr e fluxo de pedidos'},{t:'img',src:'assets/img/gamono-a.webp',cap:'Testes Jest e arquitetura'},{t:'img',src:'assets/img/gamono-b.webp',cap:'Exemplo de pedido e resposta'}]},
+ {id:'gamono',name:'GamonoAPI',cat:'backend',color:'var(--blue)',kind:'API JavaScript',year:'Cliente',commits:17,
+  short:'API privada em JavaScript feita à medida para a Gamono: login, pesquisa, leitura e atualização de dados, com testes em Jest.',
+  long:'API privada desenvolvida à medida para um único cliente, a Gamono. Está escrita em JavaScript moderno (ES6+) para Node.js e expõe funções como login(), search(), getData() e updateInfo(). Por exemplo, permite pesquisar GIFs por categoria. A configuração é feita por variáveis de ambiente, e os testes automáticos usam Jest.',
+  feats:['login() com a chave da API','search(), por exemplo para pesquisar GIFs por categoria','getData() e updateInfo() para ler e atualizar dados','Configuração por variáveis de ambiente','Testes automáticos com Jest'],
+  stack:['JavaScript ES6+','Node.js','NPM','Jest'],repo:'https://github.com/GDataa/GamonoAPI_V1',
+  media:[{t:'video',src:'assets/video/gamono.mp4',poster:'assets/img/gamono-a.webp',cap:'Testes a correr e fluxo das funções'},{t:'img',src:'assets/img/gamono-a.webp',cap:'Testes Jest e fluxo'},{t:'img',src:'assets/img/gamono-b.webp',cap:'Exemplo de utilização'}]},
  {id:'gconnect',name:'GConnect',cat:'minecraft backend',color:'var(--mint)',kind:'Mod Fabric',year:'Em desenvolvimento',
   short:'Mod de Minecraft independente, focado em funcionalidades sociais e ligação multijogador, com backend em Spring Boot.',
   long:'Mod independente para Minecraft, focado em funcionalidades sociais e em ligar jogadores no modo multijogador. O mod corre no cliente com Fabric e liga-se a um backend em Spring Boot. É o projeto que junta as duas áreas de que mais gosto: modding e backend.',
@@ -663,11 +677,11 @@ const LANGS=[
  {n:'C',b:'C',c:'#5fb4ff',lvl:'Básico',m:2,d:'Fundamentos de programação, memória e estruturas de dados.',code:[['k','#include '],['s','<stdio.h>'],['p','\n\n'],['k','int '],['f','main'],['p','(void) {\n  '],['f','printf'],['p','('],['s','"Olá, C!\\n"'],['p',');\n  '],['k','return '],['n','0'],['p',';\n}']]},
  {n:'SQL',b:'SQL',c:'#3ef0b5',lvl:'Básico',m:2,d:'Consultas e modelação de dados em MySQL, SQLite e H2.',code:[['k','SELECT '],['p','nome, raridade\n'],['k','FROM '],['t','pets'],['p','\n'],['k','WHERE '],['p','dono = '],['s',"'atilano'"],['p','\n'],['k','ORDER BY '],['p','nome;']]},
 ];
-const TOOLS=[['Spring Boot','backend'],['REST APIs','backend'],['Node.js','runtime'],['Jest','testes'],['Gradle','build'],['Maven','build'],['MySQL','base de dados'],['SQLite','base de dados'],['Redis','cache'],['H2','base de dados'],['Git','versões'],['GitHub','colaboração'],['IntelliJ IDEA','IDE'],['Fabric','modding'],['Paper','servidores'],['Spigot','servidores'],['LuckPerms','permissões'],['Vault','economia']];
+const TOOLS=[['Spring Boot','backend'],['REST APIs','backend'],['Node.js','runtime'],['Jest','testes'],['Gradle','build'],['Maven','build'],['MySQL','base de dados'],['SQLite','base de dados'],['Redis','cache'],['H2','base de dados'],['Git','versões'],['GitHub','colaboração'],['IntelliJ IDEA','IDE'],['Fabric','modding'],['Paper','servidores'],['Spigot','servidores'],['yEconomias','economia'],['Slime World Manager','mundos'],['AdvancedSlimePaper','servidores'],['MiniMessage','texto'],['Oraxen','itens'],['NPM','pacotes']];
 const ROAD=[
  {n:'GConnect — beta pública',c:'var(--mint)',st:'Em desenvolvimento',step:2,d:'Terminar as funcionalidades sociais principais (amigos, grupos e mensagens), estabilizar o backend Spring Boot e abrir o repositório.',tags:['Java','Fabric','Spring Boot']},
  {n:'GamonoAPI V2',c:'var(--blue)',st:'Planeado',step:1,d:'Uma nova versão da API, com documentação dos endpoints, mais cobertura de testes e cache com Redis.',tags:['Node.js','Redis','Jest']},
- {n:'Hyvel Core',c:'var(--amber)',st:'Planeado',step:1,d:'Uma biblioteca partilhada para os plugins do Hyvel: ligação a bases de dados, configuração e utilitários comuns, para não repetir código entre Pets e Minas.',tags:['Java','Paper','MySQL']},
+ {n:'Hyvel Core',c:'var(--amber)',st:'Planeado',step:1,d:'Uma biblioteca partilhada para os plugins do Hyvel: ligação a bases de dados, configuração e utilitários comuns, para não repetir código entre Pets, Minas e HyvelSaque.',tags:['Java','Paper','MySQL']},
  {n:'Monitor de rede',c:'var(--violet)',st:'Ideia',step:0,d:'Uma ferramenta para monitorizar dispositivos e serviços numa rede local, ligada ao que estou a aprender no CTESP de Redes.',tags:['Kotlin','Spring Boot','Redes']},
  {n:'Laboratório de cibersegurança',c:'var(--pink)',st:'Ideia',step:0,d:'Um espaço para documentar desafios CTF e experiências de segurança: aprender a atacar para saber defender.',tags:['Linux','Redes','Segurança']},
 ];
@@ -737,7 +751,7 @@ const chips=TOOLS.map(([a,b])=>`<span class="chip"><b>${a}</b> · ${b}</span>`).
 $('#marquee').innerHTML=chips+chips;
 
 /* ---------- projects ---------- */
-$('#projects').innerHTML=PROJECTS.map((p,i)=>`<article class="proj reveal" data-cat="${p.cat}" data-id="${p.id}">
+$('#projects').innerHTML=PROJECTS.map((p,i)=>`<article class="proj reveal${p.featured?' featured':''}" data-cat="${p.cat}" data-id="${p.id}">
   <div class="media" data-open="${p.id}" role="button" tabindex="0" aria-label="Abrir galeria de ${p.name}">
     <img src="${p.media[0].poster}" alt="Pré-visualização de ${p.name}" loading="lazy">
     <video muted loop playsinline preload="none" src="${p.media[0].src}"></video>
@@ -746,7 +760,7 @@ $('#projects').innerHTML=PROJECTS.map((p,i)=>`<article class="proj reveal" data-
     <div class="play"><span></span></div>
   </div>
   <div class="pbody">
-    <div class="meta"><span>0${i+1}</span><span>${p.year}</span></div>
+    <div class="meta"><span>0${i+1}</span><span>${p.year}</span>${p.featured?'<span class="new">● novo</span>':''}</div>
     <h3>${p.name}</h3>
     <p>${p.short}</p>
     <div class="tags">${p.stack.map(s=>`<span class="tag">${s}</span>`).join('')}</div>
@@ -781,7 +795,7 @@ function openProject(id){cur=PROJECTS.find(p=>p.id===id);if(!cur)return;lastFocu
   $('#mcontent').innerHTML=`<div><span class="mono" style="font-size:12px;color:var(--muted)">${esc(cur.kind)} · ${esc(cur.year)}</span><h3 id="mtitle">${esc(cur.name)}</h3><p>${esc(cur.long)}</p>
     <h4>// funcionalidades</h4><ul class="feat">${cur.feats.map(f=>`<li>${esc(f)}</li>`).join('')}</ul>
     <p class="media-note" id="mcap"></p></div>
-    <aside class="side"><div class="kv"><span>tipo</span><b>${esc(cur.kind)}</b></div><div class="kv"><span>contexto</span><b>${esc(cur.year)}</b></div><div class="kv"><span>media</span><b>${cur.media.length} ficheiros</b></div>
+    <aside class="side"><div class="kv"><span>tipo</span><b>${esc(cur.kind)}</b></div><div class="kv"><span>contexto</span><b>${esc(cur.year)}</b></div>${cur.commits?`<div class="kv"><span>commits</span><b>${cur.commits}</b></div>`:''}<div class="kv"><span>media</span><b>${cur.media.length} ficheiros</b></div>
     <h4>// stack</h4><div class="tags">${cur.stack.map(s=>`<span class="tag">${esc(s)}</span>`).join('')}</div>
     ${cur.repo?`<a class="btn primary" style="width:100%;justify-content:center" href="${cur.repo}" target="_blank" rel="noopener">Ver código no GitHub ↗</a>`:`<span class="lock">🔒 repositório ainda privado</span>`}</aside>`;
   showMedia(0);modal.classList.add('open');document.body.style.overflow='hidden';$('#mclose').focus()}
